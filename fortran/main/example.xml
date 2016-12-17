@@ -1,0 +1,38 @@
+<doc>
+  <substrate>5,8</substrate>
+
+  <molecule id='2500' symm='4' amount='100'>
+
+    <component-list size='5'>
+      <component x=' 0' y=' 0' init='1'/>
+      <component x=' 1' y=' 0' init='2'/>
+      <component x=' 0' y=' 1' init='3'/>
+      <component x='-1' y=' 0' init='2'/>
+      <component x=' 0' y='-1' init='3'/>
+    </component-list>
+
+    <reaction-list size='8'>
+
+      <reaction energy='-0.5' condition-num='2'>
+	<move x='1' y='0' d='0'/>	
+	<condition target='' option-num=''>	  
+	  <option>
+	    <pos>
+	      1,1,1
+	    </pos>
+	    <state>
+	      1,1,
+	      2,2,
+	      3,3
+	      2,2,
+	      3,3
+	    </state>
+	  </option>	  	 	  
+	</condition>
+      </reaction>
+
+    </reaction-list>
+
+  </molecule>
+
+</doc>
