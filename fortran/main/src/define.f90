@@ -437,7 +437,7 @@ contains
 
     !> Auto initialization
     call init_random_seed() ! initialize random seed
-    call init_substrate(100,100) ! this should be placed after type definitions
+    call init_substrate(20,20) ! this should be placed after type definitions
     call init_rates()
     call mlist_init()
 
