@@ -32,8 +32,8 @@ program main
   !-------------------------------------------------
   !> Evaluation
   print *, ">>> Evaporation"
-  call evaporate(tpyp, 40)
-  call evaporate(lead, 10)
+  call evaporate(tpyp, 100)
+  call evaporate(lead, 100)
   call print_to(6, 4)
   !-------------------------------------------------
   !> KMC
