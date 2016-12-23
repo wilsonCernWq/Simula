@@ -5,7 +5,7 @@ program main
   use global
   use func_substrate
   use func_rate_kmc
-  use func_xml_reader
+  ! use func_xml_reader
   use define
   implicit none
   !-------------------------------------------------
