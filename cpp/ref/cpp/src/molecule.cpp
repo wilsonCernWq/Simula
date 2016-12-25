@@ -1,0 +1,36 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// Molecule List definition
+//
+///////////////////////////////////////////////////////////////////////////////
+#include "molecule.h"
+
+///////////////////////////////////////////////////////////////////////////////
+// used namespace
+using namespace simula;
+
+///////////////////////////////////////////////////////////////////////////////
+// global variable
+MoleculeList simula::molecules;
+
+///////////////////////////////////////////////////////////////////////////////
+// generate a new MoleculeType inplace
+MoleculeType& MoleculeList::new_type()
+{
+	simSize id = m_type_list.size();
+	m_type_list.emplace_back();
+	m_type_list.back().set_idx_gen(id + 1);
+	return m_type_list.back();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// generate a new Molecule inplace 
+Molecule& MoleculeList::new_molecule(const MoleculeType& type)
+{
+	simI1 id = m_main_list.size();
+	m_main_list.emplace_back();
+	m_main_list.back().set_type(type);
+	m_main_list.back().set_type_id(type.idx_gen());
+	m_main_list.back().set_self_id(id + 1);
+	return m_main_list.back();
+}
