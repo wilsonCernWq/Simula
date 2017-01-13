@@ -9,7 +9,11 @@
 !> ...
 !
 !--------------------------------------------------------------------------- 
-#include "macro_slash.f90"
+#ifdef _WIN32
+#  define macro_SLASH '\'
+#else
+#  define macro_SLASH '/'
+#endif
 module func_substrate
 
   use func_helper   , only: alloc, rand_int
