@@ -13,26 +13,26 @@
       <spot cid='001' rx='+1' ry='0' rz='0' rd='2'/>
       <spot cid='001' rx='-1' ry='0' rz='0' rd='2'/>
       <occurrence min='1' max='1'>
-	<action cid='001' initial='2' final='3'/>
+        <action cid='001' initial='2' final='3'/>
       </occurrence>
     </reaction>
 
     <reaction evergy='' initial='2' final='4'>
-      <spot cid='001' rx='+1' ry='0' rz='0' rd='2'></spot>
-      <spot cid='001' rx='-1' ry='0' rz='0' rd='2'></spot>
+      <spot cid='001' rx='+1' ry='0' rz='0' rd='2'/>
+      <spot cid='001' rx='-1' ry='0' rz='0' rd='2'/>
       <occurrence min='2' max='2'>
-	<action cid='001' initial='2' final='3'/>
+        <action cid='001' initial='2' final='3'/>
       </occurrence>
     </reaction>
 
     <reaction evergy='' initial='3' final='4'>
-      <spot cid='001' rx='+1' ry='0' rz='0' rd='2'></spot>
-      <spot cid='001' rx='-1' ry='0' rz='0' rd='2'></spot>
+      <spot cid='001' rx='+1' ry='0' rz='0' rd='2'/>
+      <spot cid='001' rx='-1' ry='0' rz='0' rd='2'/>
       <occurrence min='1' max='1'>
-	<action cid='001' initial='2' final='3'/>
+        <action cid='001' initial='2' final='3'/>
       </occurrence>
       <occurrence min='1' max='1'>
-	<action cid='001' initial='3' final='3'/>
+        <action cid='001' initial='3' final='3'/>
       </occurrence>
     </reaction>
 
@@ -44,11 +44,11 @@
       <spot cid='002' rx='0' ry='+1' rz='0' rd='2'/>
       <spot cid='002' rx='0' ry='+1' rz='0' rd='3'/>
       <occurrence min='1' max='1'>
-	<!-- one of the following actions will be executed -->
-	<action cid='002' initial='6' final='7'/>
-	<action cid='002' initial='7' final='8'/>
-	<action cid='002' initial='8' final='9'/>
-	<action cid='002' initial='9' final='10'/>
+        <!-- one of the following actions will be executed -->
+        <action cid='002' initial='6' final='7'/>
+        <action cid='002' initial='7' final='8'/>
+        <action cid='002' initial='8' final='9'/>
+        <action cid='002' initial='9' final='10'/>
       </occurrence>
     </reaction>
 
@@ -57,48 +57,62 @@
   <!-- Pb -->
   <component cid='002' bgcolor='6'>
 
-   <reaction evergy='' initial='6' final='7'>
-     <spot rx='+1' ry='0' rz='0' rd='2'/>
-     <spot rx='-1' ry='0' rz='0' rd='2'/>
-     <spot rx='0' ry='+1' rz='0' rd='2'/>
-     <spot rx='0' ry='-1' rz='0' rd='2'/>
-     <occurrence cid='001' min='1' max='1'><action initial='2' final='5'/></occurrence>
-   </reaction>
+    <reaction evergy='' initial='6' final='7'>
+      <spot rx='+1' ry='0' rz='0' rd='2'/>
+      <spot rx='-1' ry='0' rz='0' rd='2'/>
+      <spot rx='0' ry='+1' rz='0' rd='2'/>
+      <spot rx='0' ry='-1' rz='0' rd='2'/>
+      <occurrence cid='001' min='1' max='1'>
+        <action initial='2' final='5'/>
+      </occurrence>
+    </reaction>
 
-   <reaction evergy='' initial='7' final='8'>
-     <spot rx='+1' ry='0' rz='0' rd='2'/>
-     <spot rx='-1' ry='0' rz='0' rd='2'/>
-     <spot rx='0' ry='+1' rz='0' rd='2'/>
-     <spot rx='0' ry='-1' rz='0' rd='2'/>
-     <occurrence cid='001' min='1' max='1'><action initial='2' final='5'/></occurrence>
-     <occurrence cid='001' min='1' max='1'><action initial='5' final='5'/></occurrence>
-   </reaction>
+    <reaction evergy='' initial='7' final='8'>
+      <spot rx='+1' ry='0' rz='0' rd='2'/>
+      <spot rx='-1' ry='0' rz='0' rd='2'/>
+      <spot rx='0' ry='+1' rz='0' rd='2'/>
+      <spot rx='0' ry='-1' rz='0' rd='2'/>
+      <occurrence cid='001' min='1' max='1'>
+        <action initial='2' final='5'/>
+      </occurrence>
+      <occurrence cid='001' min='1' max='1'>
+        <action initial='5' final='5'/>
+      </occurrence>
+    </reaction>
 
-   <reaction evergy='' initial='8' final='9'>
-     <spot rx='+1' ry='0' rz='0' rd='2'/>
-     <spot rx='-1' ry='0' rz='0' rd='2'/>
-     <spot rx='0' ry='+1' rz='0' rd='2'/>
-     <spot rx='0' ry='-1' rz='0' rd='2'/>
-     <occurrence cid='001' min='1' max='1'><action initial='2' final='5'/></occurrence>
-     <occurrence cid='001' min='2' max='2'><action initial='5' final='5'/></occurrence>
-   </reaction>
+    <reaction evergy='' initial='8' final='9'>
+      <spot rx='+1' ry='0' rz='0' rd='2'/>
+      <spot rx='-1' ry='0' rz='0' rd='2'/>
+      <spot rx='0' ry='+1' rz='0' rd='2'/>
+      <spot rx='0' ry='-1' rz='0' rd='2'/>
+      <occurrence cid='001' min='1' max='1'>
+        <action initial='2' final='5'/>
+      </occurrence>
+      <occurrence cid='001' min='2' max='2'>
+        <action initial='5' final='5'/>
+      </occurrence>
+    </reaction>
 
-   <reaction evergy='' initial='9' final='10'>
-     <spot rx='+1' ry='0' rz='0' rd='2'/>
-     <spot rx='-1' ry='0' rz='0' rd='2'/>
-     <spot rx='0' ry='+1' rz='0' rd='2'/>
-     <spot rx='0' ry='-1' rz='0' rd='2'/>
-     <occurrence cid='001' min='1' max='1'><action initial='2' final='5'/></occurrence>
-     <occurrence cid='001' min='3' max='3'><action initial='5' final='5'/></occurrence>
-   </reaction>
+    <reaction evergy='' initial='9' final='10'>
+      <spot rx='+1' ry='0' rz='0' rd='2'/>
+      <spot rx='-1' ry='0' rz='0' rd='2'/>
+      <spot rx='0' ry='+1' rz='0' rd='2'/>
+      <spot rx='0' ry='-1' rz='0' rd='2'/>
+      <occurrence cid='001' min='1' max='1'>
+        <action initial='2' final='5'/>
+      </occurrence>
+      <occurrence cid='001' min='3' max='3'>
+        <action initial='5' final='5'/>
+      </occurrence>
+    </reaction>
 
   </component>
 
   <!-- molecule definitions -->
   <molecule id='00'>
-    <position component='000'> 0,0,0, 0</position>
-    <position component='001'>+1,0,0,-1</position>
-    <position component='001'>-1,0,0,+1</position>
+    <position component='000' rx=' 0' ry='0' rz='0' rd=' 0'/>
+    <position component='001' rx='+1' ry='0' rz='0' rd='-1'/>
+    <position component='001' rx='-1' ry='0' rz='0' rd='+1'/>
   </molecule>
 
 </doc>
