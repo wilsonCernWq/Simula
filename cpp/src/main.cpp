@@ -3,6 +3,7 @@
 #include <sstream>
 
 #include "xmlReader.h"
+#include "xmlNodeDefinition_Action.h"
 
 /** Main program to parse the input XML file
  */

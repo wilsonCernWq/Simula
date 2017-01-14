@@ -1,6 +1,6 @@
 <doc>
   <substrate width="5" height="8"/>
-  <!-- 
+   <!--
        component definitions 
        (1): component id (cid) should be unique
        (2): color should never be zero (0 is the background color)
@@ -8,8 +8,8 @@
   <component cid='000' bgcolor='1'></component>
 
   <component cid='001' bgcolor='2'>
-    <!--- hydrogen bond -->
-    <reaction evergy='' initial='2' final='3'>
+    <!-- hydrogen bond -->
+    <reaction energy='0.1' initial='2' final='3'>
       <spot cid='001' rx='+1' ry='0' rz='0' rd='2'/>
       <spot cid='001' rx='-1' ry='0' rz='0' rd='2'/>
       <occurrence min='1' max='1'>
@@ -17,7 +17,7 @@
       </occurrence>
     </reaction>
 
-    <reaction evergy='' initial='2' final='4'>
+    <reaction energy='0.1' initial='2' final='4'>
       <spot cid='001' rx='+1' ry='0' rz='0' rd='2'/>
       <spot cid='001' rx='-1' ry='0' rz='0' rd='2'/>
       <occurrence min='2' max='2'>
@@ -25,7 +25,7 @@
       </occurrence>
     </reaction>
 
-    <reaction evergy='' initial='3' final='4'>
+    <reaction energy='0.1' initial='3' final='4'>
       <spot cid='001' rx='+1' ry='0' rz='0' rd='2'/>
       <spot cid='001' rx='-1' ry='0' rz='0' rd='2'/>
       <occurrence min='1' max='1'>
@@ -36,8 +36,8 @@
       </occurrence>
     </reaction>
 
-    <!-- coordination bond -->
-    <reaction evergy='' initial='2' final='5'>
+    <!-- coordination bond --> 
+    <reaction energy='0.1' initial='2' final='5'>
       <!-- all spots will be counted -->
       <spot cid='002' rx='0' ry='+1' rz='0' rd='0'/>
       <spot cid='002' rx='0' ry='+1' rz='0' rd='1'/>
@@ -54,10 +54,9 @@
 
   </component>
 
-  <!-- Pb -->
   <component cid='002' bgcolor='6'>
 
-    <reaction evergy='' initial='6' final='7'>
+    <reaction energy='0.1' initial='6' final='7'>
       <spot rx='+1' ry='0' rz='0' rd='2'/>
       <spot rx='-1' ry='0' rz='0' rd='2'/>
       <spot rx='0' ry='+1' rz='0' rd='2'/>
@@ -67,7 +66,7 @@
       </occurrence>
     </reaction>
 
-    <reaction evergy='' initial='7' final='8'>
+    <reaction energy='0.1' initial='7' final='8'>
       <spot rx='+1' ry='0' rz='0' rd='2'/>
       <spot rx='-1' ry='0' rz='0' rd='2'/>
       <spot rx='0' ry='+1' rz='0' rd='2'/>
@@ -80,7 +79,7 @@
       </occurrence>
     </reaction>
 
-    <reaction evergy='' initial='8' final='9'>
+    <reaction energy='0.1' initial='8' final='9'>
       <spot rx='+1' ry='0' rz='0' rd='2'/>
       <spot rx='-1' ry='0' rz='0' rd='2'/>
       <spot rx='0' ry='+1' rz='0' rd='2'/>
@@ -93,7 +92,7 @@
       </occurrence>
     </reaction>
 
-    <reaction evergy='' initial='9' final='10'>
+    <reaction energy='0.1' initial='9' final='10'>
       <spot rx='+1' ry='0' rz='0' rd='2'/>
       <spot rx='-1' ry='0' rz='0' rd='2'/>
       <spot rx='0' ry='+1' rz='0' rd='2'/>
@@ -108,7 +107,6 @@
 
   </component>
 
-  <!-- molecule definitions -->
   <molecule id='00'>
     <position component='000' rx=' 0' ry='0' rz='0' rd=' 0'/>
     <position component='001' rx='+1' ry='0' rz='0' rd='-1'/>

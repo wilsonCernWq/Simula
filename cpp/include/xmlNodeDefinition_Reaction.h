@@ -1,7 +1,6 @@
 #pragma once
 
 #include <iostream>
-#include <memory>
 #include <vector>
 
 #include "simulaBaseType.h"
@@ -10,30 +9,24 @@
 #include "xmlNodeDefinition_Occurrence.h"
 
 namespace simula {
+
 	///------------------------------------------------------
 	/// Reaction
 	struct Reaction_Core {
-		UINT gIdx, ///< global index (used in KMC lookup)
-			rIdx; ///< relative (local) index
-		UINT iid_spot,
-			fid_spot;
-		UINT iid_occurrence,
-			fid_occurrence;
-		/// --- fields from input
+	public:
+		UINT gIdx; ///< global index (used in KMC lookup)
+		UINT iid_spot, fid_spot;
+		UINT iid_occurrence, fid_occurrence;
+	public:
 		REAL energy; ///< reaction energ
 		INT state_i; ///< initial state
 		INT state_f; ///< final state
 	};
-	std::vector<Reaction_Core> vector_reactions;
-	class Reaction : public Node {
-		std::shared_ptr<Reaction_Core> core;
+	class Reaction : public NodeImplementation<Reaction_Core> {
+	protected:
 		std::vector<Spot> spots;
 		std::vector<Occurrence> occurrences;
 	public:
-		Reaction() {
-			vector_reactions.emplace_back();
-			core = std::make_shared<Reaction_Core>(vector_reactions.back());
-		}
 		void attribute(std::string str, std::string content) {
 			if (str.compare("energy") == 0) {
 				core->energy = stof(content);
@@ -49,22 +42,20 @@ namespace simula {
 				throw 0;
 			}
 		}
-		std::shared_ptr<Node> value(CHAR str) {
+		Node* value(CHAR str) {
 			if (str.compare("spot") == 0) {
-				auto node = std::make_shared<Spot>();
-				spots.push_back(*node);
-				return node;
+				spots.emplace_back();
+				return &spots.back();
 			}
 			else if (str.compare("occurrence") == 0) {
-				auto node = std::make_shared<Occurrence>();
-				occurrences.push_back(*node);
-				return node;
+				occurrences.emplace_back();
+				return &occurrences.back();
 			}
 			else {
 				std::cerr << "Error: undefined node found " << str << "n";
-				throw 0;
-				return nullptr;
+				throw 0; return nullptr;
 			}
 		}
 	};
+
 }

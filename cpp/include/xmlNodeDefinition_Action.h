@@ -1,33 +1,28 @@
 #pragma once
 
 #include <iostream>
-#include <memory>
 #include <vector>
 
 #include "simulaBaseType.h"
 #include "xmlNodeDefinition_Node.h"
 
 namespace simula {
+
 	///------------------------------------------------------
 	///< Action
 	struct Action_Core {
+	public:
 		UINT gId; ///< global index (used in KMC lookup)
-		UINT rId; ///< relative (local) index
-				  /// --- fields from input
+	public:
 		UINT component_id;
 		INT state_i; ///< initial state
 		INT state_f; ///< final state
 	};
-	std::vector<Action_Core> vector_actions;
-	class Action : public Node {
-		std::shared_ptr<Action_Core> core;
+	class Action : public NodeImplementation<Action_Core> {
+	protected:
 		CHAR component_id_char;
 	public:
-		Action() {
-			vector_actions.emplace_back();
-			core = std::make_shared<Action_Core>(vector_actions.back());
-		}
-		void attribute(CHAR str, CHAR content) {
+		virtual void attribute(CHAR str, CHAR content) {
 			if (str.compare("cid") == 0) {
 				component_id_char = content;
 			}
@@ -44,5 +39,14 @@ namespace simula {
 		}
 		/// TODO add function to deep copy data into core type
 		/// TODO function to update component id into index
+		/// update the information inside 
+		void static update() {
+			for (auto i = 0; i != Action::list.size(); ++i) {
+				auto it = Action::list[i];
+				Action::list[i].gId = i;
+				std::cout << "# " << i << " " << it.state_i << " " << it.state_f << std::endl;
+			}
+		}
 	};
+
 }

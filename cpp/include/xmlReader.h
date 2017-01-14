@@ -3,7 +3,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <memory>
 
 #include <../../utils/rapidxml_1_13/rapidxml/rapidxml.hpp>
 
@@ -14,29 +13,32 @@ namespace simula {
 
 	/** Function for reading XML input files
 	*/
-	void readnode(rapidxml::xml_node<>* n, INT level, std::shared_ptr<Node> parent)
+	void readnode(rapidxml::xml_node<>* n, INT level, Node* parent)
 	{
 		using namespace rapidxml;
 		using namespace std;
 		typedef xml_attribute<> xmlattr;
 		typedef xml_node<> xmlnode;
-		std::string indent = "   ";
+		std::string indent = "    ";
+
+		/// TODO define objects here
+		Node* child = parent->value(string(n->name()));
 
 		///< node information
 		for (INT i = 0; i < level; ++i) { cout << indent; } ///< level indentation
-		cout << "node: " << n->name() << " ";
-		cout << "value: " << n->value() << "\n";
+		cout << " << " << n->name() << " >> ";
+		cout << " " << n->value() << "\n";
 
 		///< read attributes
 		for (xmlattr* a = n->first_attribute(); a; a = a->next_attribute()) {
 			for (INT i = 0; i < level; ++i) { cout << indent; } ///< level indentation
 																///< format: [...] attribute: xxx value: xxx
-			cout << "-attribute: " << a->name() << " ";
-			cout << "value: " << a->value() << "\n";
+			cout << " ** " << a->name();
+			cout << " = " << a->value() << "\n";
+
+			child->attribute(a->name(), a->value());
 		}
 
-		/// TODO define objects here
-		std::shared_ptr<Node> child = parent->value(string(n->name()));
 
 		///< read children
 		for (xmlnode* c = n->first_node(); c; c = c->next_sibling()) {
@@ -52,14 +54,15 @@ namespace simula {
 		doc.parse<0>(&text[0]);
 
 		/// print out data
-		rapidxml::xml_node<>* rNode = doc.first_node();
+		auto rNode = doc.first_node();
 
 		/// for all sub nodes
-		simula::Document root;
-		for (rapidxml::xml_node<>* c = rNode->first_node(); c; c = c->next_sibling()) {
-			simula::readnode(c, 0, std::make_shared<simula::Document>(root));
+		auto root = new simula::Document();
+		for (auto c = rNode->first_node(); c; c = c->next_sibling()) {
+			simula::readnode(c, 0, root);
 		}
-
+		std::cout << "done here \n";
+		simula::Action::update();
 	}
 
 }

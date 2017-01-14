@@ -1,7 +1,6 @@
 #pragma once
 
 #include <iostream>
-#include <memory>
 #include <vector>
 
 #include "simulaBaseType.h"
@@ -9,26 +8,22 @@
 #include "xmlNodeDefinition_Reaction.h"
 
 namespace simula {
+
 	///------------------------------------------------------
 	/// Component
 	struct Component_Core {
+	public:
 		UINT gIdx;
-		UINT iid_reaction,
-			fid_reaction;
-		/// --- fields from input
-		UINT component_id; ///< component index
-		CHAR component_id_char;
-		INT  bgcolor;      ///< initial color (backgrounf color)
+		UINT iid_reaction, fid_reaction;
+	public:
+		UINT component_id;      ///< component index
+		CHAR component_id_char; ///< component index defined
+		INT  bgcolor;           ///< initial color (backgrounf color)
 	};
-	std::vector<Component_Core> vector_components;
-	class Component : public Node {
-		std::shared_ptr<Component_Core> core;
+	class Component : public NodeImplementation<Component_Core> {
+	protected:
 		std::vector<Reaction> reactions;
 	public:
-		Component() {
-			vector_components.emplace_back();
-			core = std::make_shared<Component_Core>(vector_components.back());
-		}
 		void attribute(std::string str, std::string content) {
 			if (str.compare("cid") == 0) {
 				core->component_id_char = content;
@@ -41,17 +36,16 @@ namespace simula {
 				throw 0;
 			}
 		}
-		std::shared_ptr<Node> value(CHAR str) {
+		Node* value(CHAR str) {
 			if (str.compare("reaction") == 0) {
-				auto node = std::make_shared<Reaction>();
-				reactions.push_back(*node);
-				return node;
+				reactions.emplace_back();
+				return &reactions.back();
 			}
 			else {
 				std::cerr << "Error: undefined node found " << str << "n";
-				throw 0;
-				return nullptr;
+				throw 0; return nullptr;
 			}
 		}
 	};
+
 }
