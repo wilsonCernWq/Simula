@@ -13,7 +13,7 @@ namespace simula {
 	/// Component
 	struct Component_Core {
 	public:
-		UINT gIdx;
+		UINT gId;
 		UINT iid_reaction, fid_reaction;
 	public:
 		UINT component_id;      ///< component index
@@ -44,6 +44,14 @@ namespace simula {
 			else {
 				std::cerr << "Error: undefined node found " << str << "n";
 				throw 0; return nullptr;
+			}
+		}
+		// update list information after definition
+		void update() {
+			for (auto i = 0; i < Component::list.size(); ++i) {
+				auto it = Component::list[i];
+				Component::list[i].gId = i;
+
 			}
 		}
 	};
